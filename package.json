@@ -1,0 +1,11 @@
+{
+  "name": "singers-company-middleburg",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "pdf": "node generate_pdf.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^24.4.0"
+  }
+}
