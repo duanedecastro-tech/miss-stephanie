@@ -7,7 +7,7 @@ Last updated: 2026-05-11
 
 ## 🔴 IMMEDIATE — Do This Week
 
-- [ ] Swap `img_girls_stripes.jpeg` with hi-res photo → regenerate both PDFs → final approval
+- [x] Swap `img_girls_stripes.jpeg` with hi-res photo → regenerate both PDFs → final approval
 - [ ] **Google Business Profile** — create listing (name, address, phone, category, photos)
 - [ ] **Fun 4 Clay Kids** — submit free program listing at fun4claykids.com/Add-Listing/
 - [ ] **Instagram** — create @singerscompanymiddleburg
