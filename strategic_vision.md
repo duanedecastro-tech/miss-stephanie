@@ -31,7 +31,7 @@ Miss Stephanie is not building a dance class. She is building the flagship locat
 
 ### Singers Company Differentiation
 - No auditions — every girl belongs
-- $75/month (target price) vs. $900+/year for JCC
+- $70/month (target price) vs. $900+/year for JCC
 - Suburban/Middleburg — underserved market JCC doesn't reach
 - Modest, values-aligned brand — resonates with church/school parent base
 - National franchise system — proven curriculum, brand recognition
@@ -39,7 +39,7 @@ Miss Stephanie is not building a dance class. She is building the flagship locat
 ---
 
 ## Price Point Decision
-- Recommended: **$75/month**
+- Recommended: **$70/month**
 - 10-month school year model (August–May)
 - Costume fees pass directly to vendor — NOT Miss Stephanie's revenue
 

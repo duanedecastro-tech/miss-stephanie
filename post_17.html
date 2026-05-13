@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post #17 — Singers Company Middleburg</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f0f0f0; font-family: 'Poppins', sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 48px; }
+  h2 { font-size: 13px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: -36px; align-self: flex-start; max-width: 540px; width: 100%; margin-left: calc(50% - 270px); }
+  .ig-post { width: 540px; background: #fff; border: 1px solid #dbdbdb; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .ig-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #efefef; }
+  .ig-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+  .ig-handle { font-size: 14px; font-weight: 600; color: #000; }
+  .ig-location { font-size: 12px; color: #8e8e8e; display: block; margin-top: 1px; }
+  .open-card {
+    width: 540px; height: 540px;
+    background: linear-gradient(160deg, #1a0a3d 0%, #6a1f8a 50%, #c2185b 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white; text-align: center; padding: 50px; gap: 0;
+  }
+  .open-card .burst { font-size: 48px; margin-bottom: 16px; }
+  .open-card .headline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px; font-weight: 800; line-height: 1.1;
+    margin-bottom: 8px; letter-spacing: -0.5px;
+  }
+  .open-card .sub {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px; font-weight: 500; opacity: 0.8;
+    margin-bottom: 36px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .open-card .details { display: flex; flex-direction: column; gap: 14px; width: 100%; }
+  .open-card .detail-row {
+    background: rgba(255,255,255,0.13);
+    border-radius: 10px; padding: 14px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .open-card .detail-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; opacity: 0.75;
+  }
+  .open-card .detail-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px; font-weight: 700;
+  }
+  .open-card .cta {
+    margin-top: 30px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50px; padding: 12px 32px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; font-weight: 700; letter-spacing: 0.5px;
+  }
+  .ig-actions { padding: 8px 16px 4px; display: flex; gap: 16px; font-size: 24px; }
+  .ig-likes { padding: 2px 16px 8px; font-size: 14px; font-weight: 600; color: #000; }
+  .ig-caption { padding: 0 16px 12px; font-size: 14px; color: #000; line-height: 1.6; }
+  .ig-caption .handle { font-weight: 700; margin-right: 6px; }
+  .ig-hashtags { padding: 0 16px 16px; font-size: 14px; color: #00376b; line-height: 1.6; }
+  .ig-timestamp { padding: 0 16px 16px; font-size: 11px; color: #8e8e8e; text-transform: uppercase; letter-spacing: 0.5px; }
+  .fb-post { width: 540px; background: #fff; border: 1px solid #dddfe2; border-radius: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,.1); }
+  .fb-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; }
+  .fb-avatar { width: 40px; height: 40px; border-radius: 50%; background: #2d1b69; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+  .fb-name { font-size: 15px; font-weight: 700; color: #050505; }
+  .fb-meta { font-size: 13px; color: #65676b; display: block; margin-top: 1px; }
+  .fb-text { padding: 0 16px 10px; font-size: 15px; color: #050505; line-height: 1.6; }
+  .fb-open-card {
+    width: 100%;
+    background: linear-gradient(160deg, #1a0a3d 0%, #6a1f8a 50%, #c2185b 100%);
+    padding: 40px 48px;
+    display: flex; flex-direction: column;
+    align-items: center; color: white; text-align: center; gap: 0;
+  }
+  .fb-open-card .burst { font-size: 36px; margin-bottom: 12px; }
+  .fb-open-card .headline { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+  .fb-open-card .sub { font-family: 'Poppins', sans-serif; font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 28px; }
+  .fb-open-card .details { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+  .fb-open-card .detail-row { background: rgba(255,255,255,0.13); border-radius: 8px; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .fb-open-card .detail-label { font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.75; }
+  .fb-open-card .detail-value { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; }
+  .fb-open-card .cta { margin-top: 22px; background: rgba(255,255,255,0.2); border-radius: 50px; padding: 10px 28px; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; }
+  .fb-reactions { padding: 8px 16px; font-size: 14px; color: #65676b; border-top: 1px solid #e4e6ea; margin-top: 8px; }
+  .copy-box { width: 540px; background: #fff; border: 1px solid #dbdbdb; border-radius: 8px; padding: 24px; }
+  .copy-box h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #999; margin-bottom: 16px; }
+  .copy-box .caption-text { font-size: 14px; line-height: 1.7; color: #000; white-space: pre-wrap; }
+  .copy-box .hashtag-block { margin-top: 16px; font-size: 13px; color: #00376b; line-height: 1.8; }
+  .divider { width: 540px; border: none; border-top: 1px solid #ddd; }
+  .meta-note { width: 540px; font-size: 12px; color: #555; background: #f8f0ff; border: 1px solid #d4aaff; border-radius: 6px; padding: 10px 14px; }
+  .meta-note strong { color: #2d1b69; }
+  .no-photo-note { width: 540px; font-size: 12px; color: #666; text-align: center; background: #e8f4fd; border: 1px solid #b3d9f5; border-radius: 6px; padding: 12px 16px; }
+</style>
+</head>
+<body>
+
+<h2>Post #17 — Instagram · Jun 15 🎉 ENROLLMENT OPENS</h2>
+
+<div class="ig-post">
+  <div class="ig-header">
+    <div class="ig-avatar">SC</div>
+    <div>
+      <div class="ig-handle">singerscompanymiddleburg</div>
+      <span class="ig-location">Middleburg, Florida</span>
+    </div>
+  </div>
+
+  <div class="open-card">
+    <div class="burst">🎤</div>
+    <div class="headline">Enrollment<br>Is Now Open</div>
+    <div class="sub">Singers Company Middleburg · Fall 2026</div>
+    <div class="details">
+      <div class="detail-row">
+        <span class="detail-label">Classes Begin</span>
+        <span class="detail-value">August 15, 2026</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Ages</span>
+        <span class="detail-value">Girls 5–18 · All Levels</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Tuition</span>
+        <span class="detail-value">$70 / month</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Auditions</span>
+        <span class="detail-value">None. Ever.</span>
+      </div>
+    </div>
+    <div class="cta">middleburg.singerscompany.com</div>
+  </div>
+
+  <div class="ig-actions">❤️ 💬 📤</div>
+  <div class="ig-likes">Be the first to like this</div>
+
+  <div class="ig-caption">
+    <span class="handle">singerscompanymiddleburg</span>TODAY IS THE DAY. 🎤🎉💜<br><br>
+    Fall 2026 enrollment for Singers Company Middleburg is officially open.<br><br>
+    We've spent months building something special for the girls of Clay County — and we are so ready to welcome your daughter in.<br><br>
+    Spots are limited. Don't wait.<br><br>
+    📲 middleburg.singerscompany.com<br>
+    📞 (480) 567-4022
+  </div>
+
+  <div class="ig-hashtags">
+    #SingersCompany #SingersCompanyMiddleburg #MiddleburgFL #ClayCountyFL #EnrollmentOpen #NowEnrolling #GirlsWhoSing #YouthChoir #RegisterNow #GirlsChoir #FloridaKids #FallEnrollment #ClayCountyMoms #KidsPerformingArts #TodayIsTheDay
+  </div>
+
+  <div class="ig-timestamp">3 minutes ago</div>
+</div>
+
+<hr class="divider">
+
+<h2>Post #17 — Facebook · Jun 15 🎉</h2>
+
+<div class="fb-post">
+  <div class="fb-header">
+    <div class="fb-avatar">SC</div>
+    <div>
+      <div class="fb-name">Singers Company Middleburg</div>
+      <span class="fb-meta">Just now · 🌐</span>
+    </div>
+  </div>
+
+  <div class="fb-text">
+    TODAY IS THE DAY. 🎤🎉💜<br><br>
+    Fall 2026 enrollment for Singers Company Middleburg is officially open — right now, as you read this.<br><br>
+    We have spent months preparing for this moment. Building the curriculum. Preparing the program. Getting ready to welcome the girls of Clay County onto a stage that is 100% theirs.<br><br>
+    Here's what your daughter gets:<br>
+    🎤 Professional performing arts training<br>
+    🎤 Real stage performances<br>
+    🎤 A community of girls who lift each other up<br>
+    🎤 $70/month · No auditions · Ages 5–18 · All skill levels<br><br>
+    Spots are limited and we expect them to fill fast. Register today.<br><br>
+    📲 middleburg.singerscompany.com<br>
+    📞 (480) 567-4022<br>
+    💌 stephanierichards@singerscompany.com<br><br>
+    <span style="color:#00376b">#SingersCompany #SingersCompanyMiddleburg #MiddleburgFL #EnrollmentOpen #NowEnrolling</span>
+  </div>
+
+  <div class="fb-open-card">
+    <div class="burst">🎤</div>
+    <div class="headline">Enrollment Is Now Open</div>
+    <div class="sub">Singers Company Middleburg · Fall 2026</div>
+    <div class="details">
+      <div class="detail-row">
+        <span class="detail-label">Classes Begin</span>
+        <span class="detail-value">August 15, 2026</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Ages</span>
+        <span class="detail-value">Girls 5–18 · All Levels</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Tuition</span>
+        <span class="detail-value">$70 / month</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Auditions</span>
+        <span class="detail-value">None. Ever.</span>
+      </div>
+    </div>
+    <div class="cta">middleburg.singerscompany.com</div>
+  </div>
+
+  <div class="fb-reactions">👍 Like &nbsp;&nbsp; 💬 Comment &nbsp;&nbsp; ↗️ Share</div>
+</div>
+
+<hr class="divider">
+
+<div class="copy-box">
+  <h3>Caption — Copy/Paste Ready</h3>
+  <div class="caption-text">TODAY IS THE DAY. 🎤🎉💜
+
+Fall 2026 enrollment for Singers Company Middleburg is officially open.
+
+We've spent months building something special for the girls of Clay County — and we are so ready to welcome your daughter in.
+
+Spots are limited. Don't wait.
+
+📲 middleburg.singerscompany.com
+📞 (480) 567-4022</div>
+  <div class="hashtag-block">
+    #SingersCompany #SingersCompanyMiddleburg #MiddleburgFL #ClayCountyFL #EnrollmentOpen #NowEnrolling #GirlsWhoSing #YouthChoir #RegisterNow #GirlsChoir #FloridaKids #FallEnrollment #ClayCountyMoms #KidsPerformingArts #TodayIsTheDay
+  </div>
+</div>
+
+<div class="no-photo-note">
+  ℹ️ <strong>No photo needed.</strong> The graphic card above is the visual. Screenshot it or export as JPG to post directly.
+</div>
+
+<div class="meta-note" style="margin-top: 0;">
+  <strong>Schedule:</strong> Jun 15 (Monday) · Post at 8:00 AM sharp — this is the biggest post of the campaign.
+</div>
+
+</body>
+</html>

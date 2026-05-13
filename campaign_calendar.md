@@ -213,7 +213,7 @@ Miss Stephanie has years of photos and videos. When Dropbox link arrives, priori
 - [ ] Contact Clay County Libraries — submit bulletin board flyer, ask about community calendar
 - [ ] Begin postcard drop-off route: pediatrician offices, kids' dentists, children's hair salons within 15 miles
 - [ ] Submit to Clay Today community calendar (free)
-- [ ] **Post 3× on social** — enrollment is open, August 15 start, $75/month
+- [ ] **Post 3× on social** — enrollment is open, August 15 start, $70/month
 - [ ] Email Wave 2 churches (Orange Park / Fleming Island)
 
 ---
@@ -352,4 +352,4 @@ Miss Stephanie has years of photos and videos. When Dropbox link arrives, priori
 | Clay Today small ad (optional) | $100–200 | June |
 | **Total estimated spend** | **$900–1,575** | |
 
-*Note: Original budget was $500. Recommend Miss Stephanie consider flexing to $1,000–1,500 given the expanded channel mix. The Peachjar 3-run strategy alone justifies it — ROI on 75–100 students at $75/month is significant.*
+*Note: Original budget was $500. Recommend Miss Stephanie consider flexing to $1,000–1,500 given the expanded channel mix. The Peachjar 3-run strategy alone justifies it — ROI on 75–100 students at $70/month is significant.*

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery — Singers Company Middleburg</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #1a1a2e;
+    border-bottom: 2px solid #7c3fa0;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  header h1 {
+    font-size: 18px; font-weight: 700;
+    color: #fff; letter-spacing: 0.5px;
+  }
+
+  header span {
+    font-size: 13px; color: #aaa;
+  }
+
+  .instructions {
+    background: #1e1e2e;
+    border-left: 4px solid #7c3fa0;
+    margin: 24px 32px 0;
+    padding: 14px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.6;
+  }
+
+  .instructions strong { color: #fff; }
+
+  /* ─── LIGHTBOX ─── */
+  #lightbox {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  #lightbox.open { display: flex; }
+
+  #lightbox-frame-wrap {
+    width: 540px; height: 540px;
+    border: 2px solid #7c3fa0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  #lightbox iframe {
+    width: 100%; height: 100%; border: none;
+  }
+
+  #lightbox-name {
+    font-size: 16px; font-weight: 600; color: #fff;
+  }
+
+  #lightbox-copy {
+    background: #7c3fa0;
+    border: none; cursor: pointer;
+    color: #fff; font-family: 'Poppins', sans-serif;
+    font-size: 14px; font-weight: 600;
+    padding: 12px 32px; border-radius: 8px;
+    transition: background 0.15s;
+  }
+
+  #lightbox-copy:hover { background: #9b50c2; }
+  #lightbox-copy.copied { background: #2e7d32; }
+
+  #lightbox-code {
+    background: #0d0d1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    color: #a8d8a8;
+    width: 100%;
+    max-width: 700px;
+    word-break: break-all;
+    line-height: 1.5;
+  }
+
+  #lightbox-close {
+    position: absolute; top: 16px; right: 24px;
+    font-size: 28px; color: #aaa; cursor: pointer;
+    line-height: 1; background: none; border: none;
+    font-family: sans-serif;
+  }
+
+  #lightbox-close:hover { color: #fff; }
+
+  /* ─── GRID ─── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 24px 32px 48px;
+  }
+
+  .card {
+    background: #1a1a2e;
+    border: 2px solid #2a2a3e;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+    position: relative;
+  }
+
+  .card:hover {
+    border-color: #7c3fa0;
+    transform: translateY(-2px);
+  }
+
+  .card.used {
+    border-color: #2e7d32;
+  }
+
+  .card.used::after {
+    content: '✓ USED';
+    position: absolute; top: 6px; left: 6px;
+    background: #2e7d32;
+    color: #fff; font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .card-thumb {
+    width: 100%; aspect-ratio: 1 / 1;
+    border: none; display: block;
+    background: #000;
+    pointer-events: none;
+  }
+
+  .card-label {
+    padding: 8px 10px;
+    font-size: 11px; color: #ccc;
+    font-weight: 500; letter-spacing: 0.3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📸 Spring Photos — Singers Company Middleburg</h1>
+  <span id="count-label">50 photos</span>
+</header>
+
+<div class="instructions">
+  <strong>How to use:</strong> Click any photo to preview it full-size. Then click <strong>Copy Embed Code</strong> — paste it into any post HTML file where you see a photo placeholder or existing iframe.
+  Green border = already used in a post.
+</div>
+
+<div class="grid" id="grid"></div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div id="lightbox-name"></div>
+  <div id="lightbox-frame-wrap">
+    <iframe id="lightbox-iframe" allow="autoplay" title="preview"></iframe>
+  </div>
+  <button id="lightbox-copy" onclick="copyCode()">Copy Embed Code</button>
+  <div id="lightbox-code"></div>
+</div>
+
+<script>
+const PHOTOS = [
+  ["IMG10806.jpg", "1SypPKmWNK15R7ws9D2GFoF_q5W8zcU2p"],
+  ["IMG10809.jpg", "112nn4dOsBrh75pOiDDZYQQpYkJI5LMZR"],
+  ["IMG10813.jpg", "1U5fmPn1EvrbxDBJ-eCuGYtVmE4o9oCsn"],
+  ["IMG10814.jpg", "1T4BFchR5kU5V74RpZ7SO3mLNjD3QR1uu"],
+  ["IMG10818.jpg", "1_X5kj5sLEtvsdPwJHb9AOSxTP3LAPv4Y"],
+  ["IMG10820-Enhanced-NR.jpg", "1lIGHENa7jm_SoJDqEyRN0lUDumjr-SFo"],
+  ["IMG10825.jpg", "1_kK3UYBbKOfgio51byofD6e0DnkEjzfw"],
+  ["IMG10826.jpg", "1FU2FcttV9gLkWfles438XpEfJ4xtzwPD"],
+  ["IMG10827.jpg", "1Tb9jigZ7fPc3DSShBV36l0kDny09hMkf"],
+  ["IMG10830.jpg", "1NrlHB-jyG_VO19ZRaWtgxLtE3VmwUNoo"],
+  ["IMG10844.jpg", "1ELuo4Nif-3_7tboKKdVfmsUTogVf91tS"],
+  ["IMG10845.jpg", "1CYOU8KyfTikfoUpp1UGediSIw0hNi3IB"],
+  ["IMG10853.jpg", "1VE0ZeWFdW7YkIhNeKN-kNMUH33Ov-d_x"],
+  ["IMG10856.jpg", "1zHrkxPbEDGngDt0HCVtSGRHG0petYZMj"],
+  ["IMG10858.jpg", "1mdT5Qstxcdt-n0otfT_CqRLMKLgIYA4d"],
+  ["IMG10859.jpg", "12oxPkxWcvUInofdR6yWZpVjv4wMEQ5dk"],
+  ["IMG10861.jpg", "19LI6hPQymeQNwieGwHn3hzT35bxCM074"],
+  ["IMG10865.jpg", "1ysuncFL2-aRo_-kW5Iq9wPG6Rw4AnILO"],
+  ["IMG10869.jpg", "10A9uaDXi9BWSbO1x-Robbyoi9HwPCYxb"],
+  ["IMG10870.jpg", "1xnd8akdMxfWlX1neabNSzWM56CQRxOob"],
+  ["IMG10871.jpg", "1SI4oHuvBAj-MJSCQGJ89iaQq8Vqd-G1i"],
+  ["IMG10873.jpg", "1n0ybr-RdBwMj_O585te6kQg-wRcCd147"],
+  ["IMG10876-2.jpg", "1drO4ijIND2xr7I9spJBLJ543wHbdsMXH"],
+  ["IMG10879.jpg", "1BD7qm2vW-sjiZeClqTaMt1q3li70ogwG"],
+  ["IMG10883.jpg", "1wpfe0y0qICHe_jymEvAhQeOixLcmxfAZ"],
+  ["IMG10884.jpg", "1dkZAcvUD4T4Isr1bL9FTlLosumG-puRR"],
+  ["IMG10888.jpg", "1XREd-iy5wPor_04U_3Sb3CYfpwEsAPrm"],
+  ["IMG10889.jpg", "1ytsOH8SgghlakruH27eKKsiZc_y06UAh"],
+  ["IMG10902.jpg", "1CRrkEcUuFBqY20oTqvVJY66P5q61lBH3"],
+  ["IMG10905.jpg", "1IDzXiw_ENez3CLv45b-srUSsK_E46YdX"],
+  ["IMG10906.jpg", "13HMhygHiguVdKw4VmuIvvV5oyHZNiZIk"],
+  ["IMG10908.jpg", "1E4Sd9wKy-m44z_EdfSHf7MrFuaRnMxr5"],
+  ["IMG10909.jpg", "1vAWN33a9fOpmTsKxyWAhMPWRbB9vk5fL"],
+  ["IMG10912.jpg", "16sLxPYFEPkox5hQOEJGERawHCmF6mHnK"],
+  ["IMG10913.jpg", "1nbuqSrLSHRaVDEcQW31TL_ODZbzOldUU"],
+  ["IMG10917.jpg", "195EArykRVQ2KHTJZc73R-ZUUWJ7bT2Fq"],
+  ["IMG10945.jpg", "1_1DKyn5lqvwR5P4M5XSgfcV6lxotD292"],
+  ["IMG10947.jpg", "1zgsUhEUsc72rO2U7exdx02_D1vJ4NWM7"],
+  ["IMG10948.jpg", "1RxZTo8LFtoHOookUcTN4YdqdIOeuI7LV"],
+  ["IMG10949.jpg", "1r8Rc41W4UILhzrLRXE8kqg7sjhuMbUPQ"],
+  ["IMG10953.jpg", "1N6iPbfwK_ZqHPL7v3y1jIVjkJuEtoDzS"],
+  ["IMG10956.jpg", "1tzZngaAGpBBgT3yyRJru5vYRjiP0Z6zA"],
+  ["IMG10958.jpg", "1-6Emeivu1wWu4X30JTrG5Z4c6_q-RVbt"],
+  ["IMG10960.jpg", "1liqMTjp7TuZxVJAwooAOMpWhubvwzjve"],
+  ["IMG10961.jpg", "1X4IkchRluipkCJ9JsFA1r39Gr3wxLziA"],
+  ["IMG10962.jpg", "11cpkWSzP8yFccnfbOTWtp5xNdURn-Sg8"],
+  ["IMG10963.jpg", "1TCdPiQ0P9aGek15MbN40q-_afpa50veH"],
+  ["IMG10964.jpg", "1wcmWBEPk4WXn-kEAc3716xz4wx51qVkE"],
+  ["IMG10965.jpg", "1jU8FgClf4LyUfgP71iLwv6b5Q_8v0uzX"],
+  ["IMG10967.jpg", "1RVoKx_xPkb7j-covdamp3OjXlrMlEx8X"]
+];
+
+// Photos already assigned to posts
+const USED_IDS = new Set([
+  "1ELuo4Nif-3_7tboKKdVfmsUTogVf91tS", // post_01 IMG10844
+  "1NrlHB-jyG_VO19ZRaWtgxLtE3VmwUNoo", // post_02 IMG10830
+  "1T4BFchR5kU5V74RpZ7SO3mLNjD3QR1uu", // post_03 IMG10814
+  "195EArykRVQ2KHTJZc73R-ZUUWJ7bT2Fq"  // post_04 IMG10917
+]);
+
+let activeId = null;
+
+function openLightbox(name, id) {
+  activeId = id;
+  const src = `https://drive.google.com/file/d/${id}/preview`;
+  document.getElementById('lightbox-iframe').src = src;
+  document.getElementById('lightbox-name').textContent = name;
+
+  const igCode = `<iframe src="${src}" style="width:540px;height:540px;border:none;display:block;" allow="autoplay" title="${name}"></iframe>`;
+  const fbCode = `<iframe src="${src}" style="width:100%;height:380px;border:none;display:block;" allow="autoplay" title="${name}"></iframe>`;
+  document.getElementById('lightbox-code').textContent =
+    'Instagram (540×540):\n' + igCode + '\n\nFacebook (100%×380px):\n' + fbCode;
+
+  const btn = document.getElementById('lightbox-copy');
+  btn.textContent = 'Copy Embed Code';
+  btn.classList.remove('copied');
+
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lightbox-iframe').src = '';
+  activeId = null;
+}
+
+function copyCode() {
+  if (!activeId) return;
+  const src = `https://drive.google.com/file/d/${activeId}/preview`;
+  const name = document.getElementById('lightbox-name').textContent;
+  const igCode = `<iframe src="${src}" style="width:540px;height:540px;border:none;display:block;" allow="autoplay" title="${name}"></iframe>`;
+  const fbCode = `<iframe src="${src}" style="width:100%;height:380px;border:none;display:block;" allow="autoplay" title="${name}"></iframe>`;
+  const full = 'Instagram (540×540):\n' + igCode + '\n\nFacebook (100%×380px):\n' + fbCode;
+  navigator.clipboard.writeText(full).then(() => {
+    const btn = document.getElementById('lightbox-copy');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Embed Code';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+// Keyboard ESC to close
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Build grid
+const grid = document.getElementById('grid');
+PHOTOS.forEach(([name, id]) => {
+  const card = document.createElement('div');
+  card.className = 'card' + (USED_IDS.has(id) ? ' used' : '');
+  card.innerHTML = `
+    <iframe class="card-thumb" src="https://drive.google.com/file/d/${id}/preview" allow="autoplay" title="${name}"></iframe>
+    <div class="card-label">${name}</div>
+  `;
+  card.addEventListener('click', () => openLightbox(name, id));
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
