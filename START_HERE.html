@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>START HERE — Singers Company Middleburg Social Media Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f4f0ff; font-family: 'Poppins', sans-serif; padding: 40px 20px; }
+  .page { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #2d1b69 0%, #6b21a8 100%); border-radius: 16px; padding: 40px 36px; color: #fff; text-align: center; }
+  .header .badge { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #d8b4fe; margin-bottom: 12px; }
+  .header h1 { font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
+  .header p { font-size: 15px; color: #e9d5ff; line-height: 1.6; max-width: 480px; margin: 0 auto; }
+
+  /* What you have */
+  .inventory { background: #fff; border-radius: 12px; padding: 28px 32px; border: 1px solid #e9d5ff; }
+  .inventory h2 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #7c3aed; margin-bottom: 20px; }
+  .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .inv-item { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; }
+  .inv-icon { font-size: 22px; flex-shrink: 0; }
+  .inv-item strong { font-size: 13px; font-weight: 700; color: #2d1b69; display: block; margin-bottom: 2px; }
+  .inv-item span { font-size: 12px; color: #666; line-height: 1.4; }
+
+  /* Step blocks */
+  .step { background: #fff; border-radius: 12px; padding: 28px 32px; border: 1px solid #e9d5ff; position: relative; }
+  .step-number { width: 44px; height: 44px; background: #2d1b69; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+  .step h2 { font-size: 20px; font-weight: 700; color: #2d1b69; margin-bottom: 8px; }
+  .step .subtitle { font-size: 13px; color: #7c3aed; font-weight: 600; margin-bottom: 16px; }
+  .step p { font-size: 14px; color: #333; line-height: 1.7; margin-bottom: 12px; }
+  .step p:last-child { margin-bottom: 0; }
+
+  /* Action list */
+  .action-list { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .action-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #222; line-height: 1.5; }
+  .action-list li .num { width: 24px; height: 24px; background: #7c3aed; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .action-list li .check { width: 24px; height: 24px; background: #16a34a; border-radius: 50%; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+  /* Sub-steps */
+  .substep { background: #faf5ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 14px 16px; margin-top: 16px; }
+  .substep p { font-size: 13px; color: #444; margin-bottom: 6px; }
+  .substep p:last-child { margin-bottom: 0; }
+  .substep strong { color: #2d1b69; }
+
+  /* Warning / alert */
+  .alert { background: #fff7ed; border: 2px solid #f97316; border-radius: 10px; padding: 16px 20px; margin-top: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .alert .alert-icon { font-size: 22px; flex-shrink: 0; }
+  .alert p { font-size: 13px; color: #7c2d12; line-height: 1.6; margin: 0; }
+  .alert strong { color: #c2410c; }
+
+  /* Special post callout */
+  .special { background: #fef2f2; border: 2px solid #dc2626; border-radius: 10px; padding: 16px 20px; margin-top: 16px; }
+  .special .special-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #dc2626; margin-bottom: 8px; }
+  .special p { font-size: 13px; color: #7f1d1d; line-height: 1.6; margin: 0; }
+
+  /* Code/file reference */
+  .file-ref { background: #1e1b4b; color: #a5b4fc; font-family: monospace; font-size: 13px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+
+  /* Quick ref table */
+  .ref-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
+  .ref-table th { background: #2d1b69; color: #fff; padding: 10px 14px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .ref-table th:first-child { border-radius: 8px 0 0 0; }
+  .ref-table th:last-child { border-radius: 0 8px 0 0; }
+  .ref-table td { padding: 10px 14px; border-bottom: 1px solid #e9d5ff; color: #222; vertical-align: top; }
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: #faf5ff; }
+
+  /* Tip box */
+  .tip { background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 14px 18px; margin-top: 14px; display: flex; gap: 10px; }
+  .tip .tip-icon { font-size: 18px; flex-shrink: 0; }
+  .tip p { font-size: 13px; color: #14532d; line-height: 1.6; margin: 0; }
+
+  /* Final banner */
+  .finish { background: linear-gradient(135deg, #2d1b69, #6b21a8); border-radius: 12px; padding: 32px; color: #fff; text-align: center; }
+  .finish h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+  .finish p { font-size: 14px; color: #e9d5ff; line-height: 1.7; max-width: 480px; margin: 0 auto 16px; }
+  .finish .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .finish .contact-item { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #e9d5ff; }
+  .finish .contact-item strong { color: #fff; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+
+  @media (max-width: 520px) {
+    .inv-grid { grid-template-columns: 1fr; }
+    .finish .contact-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">Singers Company Middleburg · Fall 2026</div>
+    <h1>Your Complete Social Media Guide</h1>
+    <p>Everything has been built for you. This guide walks you through exactly what to do — step by step — so you can schedule your entire 2-month campaign in one sitting.</p>
+  </div>
+
+  <!-- What you have -->
+  <div class="inventory">
+    <h2>What's in This Package</h2>
+    <div class="inv-grid">
+      <div class="inv-item">
+        <div class="inv-icon">📋</div>
+        <div>
+          <strong>29 Post Files</strong>
+          <span>post_01.html through post_29.html — every post from May 13 to Jul 12, fully written</span>
+        </div>
+      </div>
+      <div class="inv-item">
+        <div class="inv-icon">📅</div>
+        <div>
+          <strong>calendar.md</strong>
+          <span>Full 2-month schedule — dates, times, photo names for every post at a glance</span>
+        </div>
+      </div>
+      <div class="inv-item">
+        <div class="inv-icon">🖼️</div>
+        <div>
+          <strong>gallery.html</strong>
+          <span>Photo picker — click any of your 50 Spring Photos to preview and copy the embed code</span>
+        </div>
+      </div>
+      <div class="inv-item">
+        <div class="inv-icon">📖</div>
+        <div>
+          <strong>START_HERE.html</strong>
+          <span>This guide — step-by-step instructions for scheduling everything in Meta Business Suite</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-number">1</div>
+    <h2>One-Time Setup</h2>
+    <div class="subtitle">Do this once before you start. Takes 5 minutes.</div>
+    <p>Before you begin scheduling posts, make sure both of these are set up in your browser. You only need to do this once.</p>
+    <ul class="action-list">
+      <li>
+        <div class="check">✓</div>
+        <div><strong>Sign into Google.</strong> Open your browser and make sure you're logged into the Google account that owns the Spring Photos Drive folder. The post photos load directly from Google Drive — if you're not signed in, the photos won't show up.</div>
+      </li>
+      <li>
+        <div class="check">✓</div>
+        <div><strong>Sign into Meta Business Suite.</strong> Go to <strong>business.facebook.com</strong> and log into your account. This is where you'll schedule all your Instagram and Facebook posts at the same time.</div>
+      </li>
+    </ul>
+    <div class="tip">
+      <div class="tip-icon">💡</div>
+      <p>You can have both tabs open at the same time — Google Drive in one tab, Meta Business Suite in another. That makes dragging photos faster.</p>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-number">2</div>
+    <h2>Open the Calendar</h2>
+    <div class="subtitle">This tells you which post to schedule, when, and which photo to use.</div>
+    <p>Open <span class="file-ref">calendar.md</span> — you can open it in any text editor (Notepad works fine) or in a browser. This file is your master schedule. Every post is listed with:</p>
+    <ul class="action-list">
+      <li><div class="num">→</div><div>The post number (e.g., Post #6)</div></li>
+      <li><div class="num">→</div><div>The date and day of the week to post it</div></li>
+      <li><div class="num">→</div><div>The best time to schedule it</div></li>
+      <li><div class="num">→</div><div>The photo file name to use (e.g., IMG10906)</div></li>
+    </ul>
+    <p style="margin-top:14px;">Work through the calendar from top to bottom. Each session, pick the next 3–5 posts you want to schedule and do them all at once.</p>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <div class="step-number">3</div>
+    <h2>How to Schedule One Post</h2>
+    <div class="subtitle">Repeat this for all 29 posts. Takes about 3 minutes per post.</div>
+    <p>Here is the exact workflow for scheduling a single post. Once you do it two or three times, it becomes automatic.</p>
+    <ul class="action-list">
+      <li>
+        <div class="num">1</div>
+        <div><strong>Open the post file.</strong> Double-click <span class="file-ref">post_XX.html</span> — it opens in your browser. Scroll to the bottom section labeled <strong>"Caption — Copy/Paste Ready."</strong></div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div><strong>Copy the caption.</strong> Click and drag to select all the caption text, then copy it (Ctrl+C on Windows, Cmd+C on Mac). The hashtags are already included at the bottom of that box.</div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div><strong>Find the photo in Google Drive.</strong> Open your Spring Photos folder in Google Drive. The photo name is listed in the purple box at the bottom of each post file (e.g., <em>Photo: IMG10906</em>). Find that file in Drive.</div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div><strong>Go to Meta Business Suite.</strong> Click <strong>Create Post</strong>. Select both Instagram and Facebook at the same time — one post, both platforms.</div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div><strong>Add the photo.</strong> Drag the photo from your Google Drive folder directly into the Meta post. Or click the photo upload button and select it.</div>
+      </li>
+      <li>
+        <div class="num">6</div>
+        <div><strong>Paste the caption.</strong> Click in the caption field and paste (Ctrl+V). Everything — the caption text and all hashtags — is already there.</div>
+      </li>
+      <li>
+        <div class="num">7</div>
+        <div><strong>Set the date and time.</strong> Instead of clicking "Post Now," click <strong>"Schedule."</strong> Set the date and time from the purple box at the bottom of the post file, or from calendar.md.</div>
+      </li>
+      <li>
+        <div class="num">8</div>
+        <div><strong>Click Schedule.</strong> Done. Move to the next post in the calendar.</div>
+      </li>
+    </ul>
+    <div class="substep">
+      <p><strong>Where do I find the caption + hashtags?</strong> Scroll to the bottom section of any post file labeled "Caption — Copy/Paste Ready." Everything you need to copy is right there in that one box.</p>
+      <p><strong>Where do I find the date and time?</strong> Look for the purple strip at the very bottom of each post file. It says: Schedule: [date] · Best time: [time] · Photo: [IMG name]</p>
+    </div>
+  </div>
+
+  <!-- Step 4 — Special posts -->
+  <div class="step">
+    <div class="step-number">4</div>
+    <h2>The Two Special Posts</h2>
+    <div class="subtitle">Posts #5 and #17 have no photos. Here's what to do instead.</div>
+    <p>Two posts in the campaign use a custom graphic card that's built right into the HTML file — no separate photo needed. Instead of uploading a photo from Drive, you'll take a screenshot of the HTML page and upload that screenshot.</p>
+
+    <ul class="action-list">
+      <li>
+        <div class="num">1</div>
+        <div>Open <span class="file-ref">post_05.html</span> or <span class="file-ref">post_17.html</span> in your browser.</div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div>Take a screenshot of the graphic card at the top of the page. On Windows: press <strong>Windows + Shift + S</strong> and drag to select just the graphic. On Mac: press <strong>Cmd + Shift + 4</strong>.</div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div>Upload that screenshot as the photo in Meta Business Suite. Then paste the caption as normal.</div>
+      </li>
+    </ul>
+
+    <div class="special">
+      <div class="special-title">⚠️ Post #17 — June 15 — Most Important Post of the Campaign</div>
+      <p>This is the <strong>Enrollment Is Now Open</strong> announcement. Set a phone alarm for <strong>8:00 AM on June 15.</strong> This post goes live at exactly 8:00 AM — not later in the day. The earlier it goes out, the more engagement it gets throughout the day. Don't let this one slip by.</p>
+    </div>
+  </div>
+
+  <!-- Step 5 — Tips -->
+  <div class="step">
+    <div class="step-number">5</div>
+    <h2>Pro Tips for Best Results</h2>
+    <div class="subtitle">Small things that make a real difference.</div>
+
+    <ul class="action-list">
+      <li>
+        <div class="check">✓</div>
+        <div><strong>Schedule in batches.</strong> Sit down once a week and schedule the next 3 posts all at once. Takes about 10 minutes. Then you don't have to think about it again until next week.</div>
+      </li>
+      <li>
+        <div class="check">✓</div>
+        <div><strong>Check comments the day after each post.</strong> If someone comments "How do I sign up?" or "Is this still open?", reply quickly. Fast replies boost reach on both platforms.</div>
+      </li>
+      <li>
+        <div class="check">✓</div>
+        <div><strong>Share to your personal account too.</strong> After each post goes live on the Singers Company page, share it to your personal Facebook and Instagram as well. Your personal followers are your warmest audience.</div>
+      </li>
+      <li>
+        <div class="check">✓</div>
+        <div><strong>On Post #15 (Jun 10), actually tag a mom.</strong> That post says "tag a mom you know." When you post it, go into the comments yourself and tag 2–3 specific moms from Middleburg or Clay County. That jumpstarts the tagging chain.</div>
+      </li>
+      <li>
+        <div class="check">✓</div>
+        <div><strong>Pin Post #17 to the top of your Facebook page.</strong> After the enrollment-open post goes live on June 15, pin it to the top of your Facebook page so it's the first thing anyone sees when they visit.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Step 6 — Never changes -->
+  <div class="step">
+    <div class="step-number">6</div>
+    <h2>Double-Check These Every Time</h2>
+    <div class="subtitle">These details appear in every post. Make sure they never change.</div>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Detail</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monthly price</td>
+          <td><strong>$70/month</strong></td>
+        </tr>
+        <tr>
+          <td>Age range</td>
+          <td><strong>Ages 5–18</strong></td>
+        </tr>
+        <tr>
+          <td>Auditions required?</td>
+          <td><strong>No auditions</strong></td>
+        </tr>
+        <tr>
+          <td>First day of class</td>
+          <td><strong>August 15, 2026</strong></td>
+        </tr>
+        <tr>
+          <td>Website</td>
+          <td><strong>middleburg.singerscompany.com</strong></td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td><strong>(480) 567-4022</strong></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><strong>stephanierichards@singerscompany.com</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert">
+      <div class="alert-icon">⚠️</div>
+      <p>If any of these details change — especially the price or start date — you'll need to update the post files before scheduling. Don't post outdated information. Every caption was written with these exact values.</p>
+    </div>
+  </div>
+
+  <!-- Finish -->
+  <div class="finish">
+    <h2>You're ready. Go get those families. 🎤💜</h2>
+    <p>Every post is written, every photo is assigned, every hashtag is researched. All you have to do is open the calendar, follow the schedule, and show up for your community.</p>
+    <div class="contact-grid">
+      <div class="contact-item"><strong>Website</strong>middleburg.singerscompany.com</div>
+      <div class="contact-item"><strong>Phone</strong>(480) 567-4022</div>
+      <div class="contact-item"><strong>Email</strong>stephanierichards@singerscompany.com</div>
+      <div class="contact-item"><strong>Classes Start</strong>August 15, 2026</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
