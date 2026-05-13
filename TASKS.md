@@ -1,7 +1,7 @@
 # Miss Stephanie — Singers Company Middleburg
 # TASKS
 
-Last updated: 2026-05-11
+Last updated: 2026-05-13
 
 ---
 
@@ -104,6 +104,13 @@ When received, pull in this priority order:
 ---
 
 ## ✅ DONE
+
+- [x] **Full 29-post Fall 2026 enrollment campaign** — May 13–Jul 12, all posts built with IG + FB mock-ups, captions, hashtags
+- [x] **calendar.md** — 9-week posting schedule with dates, times, photos
+- [x] **Hashtag strategy** — researched Clay County / Jacksonville demo, 3-tier IG system, competitor gap analysis, military family angle
+- [x] **gallery.html** — photo reference guide for all 23 named photos
+- [x] **START_HERE.html** — step-by-step onboarding guide for Miss Stephanie
+- [x] **Google Drive upload** — all 32 files in "Fall 2026 Campaign" folder (inside 2025 Spring Photos)
 
 - [x] Campaign strategy locked — pricing, enrollment dates, contact info
 - [x] Front page flyer (`flyer.html`) — approved
