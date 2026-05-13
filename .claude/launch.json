@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "butts-by-duane",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3131", "."],
+      "port": 3131
+    },
+    {
+      "name": "singers-company",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "4444", ".claude/worktrees/happy-williams-fb3cc5"],
+      "port": 4444
+    }
+  ]
+}
