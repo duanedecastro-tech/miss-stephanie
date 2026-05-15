@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singers Company — Back Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Abril+Fatface&family=Great+Vibes&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @page { size: 8.5in 11in; margin: 0; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .flyer { box-shadow: none; border-radius: 0; }
+    }
+
+    body {
+      background: #c8c8c8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ══ PAGE SHELL ══ */
+    .flyer {
+      width: 8.5in;
+      height: 11in;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.28);
+      border-radius: 4px;
+    }
+
+    /* ══ 1. HERO — matches front, 2.1in ══ */
+    .hero {
+      flex: 0 0 2.1in;
+      display: flex;
+      flex-direction: row;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left {
+      flex: 0 0 2.1in;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2in 0.5in 0.2in 0.25in;
+      position: relative;
+      z-index: 2;
+      overflow: visible;
+    }
+    .hero-left img {
+      width: 130%;
+      height: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: -44px;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-top: 101px solid transparent;
+      border-bottom: 101px solid transparent;
+      border-left: 44px solid #fff;
+      z-index: 3;
+    }
+
+    .hero-right {
+      flex: 1;
+      background: linear-gradient(145deg, #d63f82 0%, #e8659a 50%, #f48cbf 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0.2in 0.3in 0.2in 0.65in;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .sparkle {
+      position: absolute;
+      color: rgba(255,255,255,0.5);
+      pointer-events: none;
+    }
+    .s1 { top: 10px; left: 50px; font-size: 16px; }
+    .s2 { top: 16px; right: 70px; font-size: 11px; }
+    .s3 { bottom: 14px; right: 44px; font-size: 14px; }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+
+    .at-label {
+      font-size: 9pt;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .hero-headline {
+      font-family: 'Abril Fatface', serif;
+      font-size: 30pt;
+      color: #fff;
+      line-height: 1.15;
+      text-shadow: 0 3px 14px rgba(0,0,0,0.16);
+      white-space: nowrap;
+    }
+    .hero-headline .accent {
+      color: #ffe44d;
+      font-family: 'Great Vibes', cursive;
+      font-size: 44pt;
+      display: inline;
+      vertical-align: middle;
+    }
+
+    .hero-sub {
+      margin-top: 8px;
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border-radius: 50px;
+      padding: 5px 18px;
+      font-size: 8pt;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+
+    /* ══ 2. BELIEF BAND — 0.55in ══ */
+    .belief-band {
+      flex: 0 0 0.55in;
+      background: #1e1e2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.5in;
+      text-align: center;
+    }
+    .belief-band p {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #fff;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .belief-band p .hl { color: #ffe44d; font-style: normal; font-weight: 900; }
+
+    /* ══ 3. PHOTO — cropped from flyer image, flex fill ══ */
+    .photo-band {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .photo-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+    .photo-band::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 40px;
+      background: #fff;
+      clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    }
+
+    /* ══ 4. MISSION SECTION — 3.5in ══ */
+    .mission {
+      flex: 0 0 3.5in;
+      display: flex;
+      flex-direction: column;
+      padding: 0.3in 0.5in 0.2in;
+      background: #fff;
+      gap: 0.18in;
+    }
+
+    .mission-headline {
+      font-family: 'Abril Fatface', serif;
+      font-size: 22pt;
+      color: #e8659a;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .mission-block {
+      background: linear-gradient(145deg, #fff0f6, #ffe8f2);
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .mission-block p {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #3a2040;
+      line-height: 1.7;
+    }
+    .mission-block p strong {
+      color: #d63f82;
+      font-weight: 800;
+    }
+
+    .mission-quote {
+      text-align: center;
+      padding: 0 0.2in;
+    }
+    .mission-quote p {
+      font-family: 'Great Vibes', cursive;
+      font-size: 26pt;
+      color: #e8659a;
+      line-height: 1.3;
+    }
+
+    /* ══ 5. CTA BAND — 0.55in ══ */
+    .cta-band {
+      flex: 0 0 0.55in;
+      background: linear-gradient(145deg, #d63f82 0%, #e8659a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0.45in;
+    }
+    .cta-band .cta-left {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20pt;
+      font-weight: 700;
+      color: #ffe44d;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .cta-band .cta-right {
+      text-align: right;
+    }
+    .cta-band .cta-right a {
+      display: block;
+      font-size: 9pt;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    /* ══ 6. FOOTER — 0.4in ══ */
+    .footer {
+      flex: 0 0 0.4in;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0.42in;
+      background: #fff;
+    }
+    .director-info .di-name {
+      font-size: 11pt;
+      font-weight: 900;
+      color: #1e1e2e;
+    }
+    .director-info .di-role {
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: #e8659a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .footer-logo img {
+      height: 0.3in;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="flyer">
+
+    <!-- 1. HERO — matches front -->
+    <div class="hero">
+      <div class="hero-left">
+        <img src="logo-horizontal.png" alt="Singers Company">
+      </div>
+      <div class="hero-right">
+        <span class="sparkle s1">✦</span>
+        <span class="sparkle s2">★</span>
+        <span class="sparkle s3">✦</span>
+        <div class="hero-text">
+          <div class="at-label">At Singers Company...</div>
+          <div class="hero-headline">
+            Every Girl Has a <span class="accent">Voice!</span>
+          </div>
+          <div class="hero-sub">Clay County, Florida</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. BELIEF BAND -->
+    <div class="belief-band">
+      <p>We believe there is beauty and value in <span class="hl">EACH</span> and <span class="hl">EVERY</span> voice!</p>
+    </div>
+
+    <!-- 3. PHOTO — cropped from existing flyer image -->
+    <div class="photo-band">
+      <img src="img_girls_cropped.jpg" alt="Singers Company girls performing">
+    </div>
+
+    <!-- 4. MISSION -->
+    <div class="mission">
+
+      <div class="mission-headline">Confident girls can CHANGE the world!</div>
+
+      <div class="mission-block">
+        <p>
+          <strong>Singers Company</strong> is a non-competitive performing group for elementary-age girls.
+          Our goal is to provide a fun environment to inspire young girls with
+          <strong>confidence through music &amp; dance.</strong>
+        </p>
+      </div>
+
+      <div class="mission-block">
+        <p>
+          We believe that when girls feel confident &amp; empowered, they make better decisions,
+          look for the good in others, and grow up to be <strong>powerful women &amp; moms.</strong>
+          Confident girls can change the world — one person, one family, one community at a time.
+        </p>
+      </div>
+
+      <div class="mission-quote">
+        <p>"Come sing and dance with us!"</p>
+      </div>
+
+    </div>
+
+    <!-- 5. CTA BAND -->
+    <div class="cta-band">
+      <div class="cta-left">Register Now!</div>
+      <div class="cta-right">
+        <a href="https://middleburg.singerscompany.com">middleburg.singerscompany.com</a>
+        <a href="tel:4805674022">480-567-4022</a>
+        <a href="mailto:stephanierichards@singerscompany.com">stephanierichards@singerscompany.com</a>
+      </div>
+    </div>
+
+    <!-- 6. FOOTER -->
+    <div class="footer">
+      <div class="director-info">
+        <div class="di-name">Stephanie Richards</div>
+        <div class="di-role">Director</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:0.5in;height:0.5in;border:2px dashed #e8659a;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-size:5.5pt;font-weight:900;color:#e8659a;letter-spacing:0.5px;line-height:1.3;">QR<br>CODE</div>
+        </div>
+        <div class="footer-logo">
+          <img src="logo-sadie.png" alt="Singers Company">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
